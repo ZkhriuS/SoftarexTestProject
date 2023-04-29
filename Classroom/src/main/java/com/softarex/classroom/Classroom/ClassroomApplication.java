@@ -1,4 +1,4 @@
-package com.example.classroom;
+package com.softarex.classroom.Classroom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
