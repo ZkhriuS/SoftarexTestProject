@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>login</title>
 </head>
 <body>
-
+<label for="login">"Your Name"</label>
+<input type="text" id="login" name="login" required minlength="4" size="20">
+<button onclick="location.href='../..'">"Log In"</button>
 </body>
 </html>

@@ -4,9 +4,28 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          metadata-complete="true"
          version="4.0">
+    <listener>
+
+        <listener-class>org.springframework.web.context.ContextLoaderListener
+
+        </listener-class>
+
+    </listener>
+
+    <context-param>
+
+        <param-name>contextConfigLocation</param-name>
+
+        <param-value>/WEB-INF/views</param-value>
+
+    </context-param>
     <servlet>
         <servlet-name>classroom</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/web/WEB-INF/classroom-servlet.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
