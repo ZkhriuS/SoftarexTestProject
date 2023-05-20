@@ -11,6 +11,8 @@
     <title>classroom</title>
 </head>
 <body>
-
+<label for="login">"Your Name"</label>
+<input type="text" id="login" name="login" required minlength="4" size="20">
+<button onclick="location.href='../../..'">"Log In"</button>
 </body>
 </html>

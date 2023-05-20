@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-@ComponentScan()
+@ComponentScan(basePackages =
+        {"com.softarex.classroom.Classroom"})
 public class AppConfig {
     @Bean
     public AppService appService(StudentRepository repository) {

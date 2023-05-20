@@ -1,12 +1,11 @@
 package com.softarex.classroom.Classroom.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class ClassroomController {
-    @GetMapping(value = "/login/classroom")
+    @GetMapping(value = "/login/")
     public String classroom() {
         return "classroom";
     }
