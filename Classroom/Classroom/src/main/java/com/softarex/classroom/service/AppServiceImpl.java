@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/*
 @Service
 public class AppServiceImpl implements AppService{
     StudentRepository repository;
@@ -29,4 +29,4 @@ public class AppServiceImpl implements AppService{
         student.setHandUp(!handState);
         repository.save(student);
     }
-}
+}*/

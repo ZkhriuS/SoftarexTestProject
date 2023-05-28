@@ -17,19 +17,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-@Configuration
+/*@Configuration
 @ComponentScan
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
-    @Bean
+    /*@Bean
     public ViewResolver viewResolver(){
         InternalResourceViewResolver vr = new InternalResourceViewResolver();
         vr.setViewClass(JstlView.class);
-        vr.setPrefix("/WEB-INF/views/");
-        vr.setSuffix(".jsp");
+        vr.setPrefix("/resources/static/*");
+        vr.setSuffix(".html");
         return vr;
-    }
-    @Bean
+    }*/
+    /*@Bean
     public DispatcherServlet dispatcherServlet() {
         DispatcherServlet dispatcherServlet = new DispatcherServlet();
         dispatcherServlet.setThreadContextInheritable(true);
@@ -42,12 +42,12 @@ public class WebConfig implements WebMvcConfigurer {
         registration.setLoadOnStartup(1);
         registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
         return registration;
-    }
-    @Bean
+    }*/
+    /*@Bean
     public ServletRegistrationBean<HttpServlet> classroomServletRegistration(){
         ServletRegistrationBean<HttpServlet> registrationBean = new ServletRegistrationBean<>(dispatcherServlet(), "/login/");
         registrationBean.setLoadOnStartup(0);
         registrationBean.setName("classroom");
         return registrationBean;
-    }
-}
+    }*/
+//}
