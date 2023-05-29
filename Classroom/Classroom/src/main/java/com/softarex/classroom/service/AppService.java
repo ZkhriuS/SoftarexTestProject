@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AppService {
     List<Student> findAllStudents();
-    void addStudent(Student student);
+    Student addStudent(Student student);
     void handUpDown(Student student);
+    Student getStudentById(int id);
 }

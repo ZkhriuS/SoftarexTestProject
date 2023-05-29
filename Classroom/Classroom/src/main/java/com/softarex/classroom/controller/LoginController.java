@@ -3,37 +3,38 @@ package com.softarex.classroom.controller;
 import com.softarex.classroom.model.Student;
 import com.softarex.classroom.model.StudentRepository;
 import com.softarex.classroom.service.AppService;
+import org.hibernate.result.Output;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8080")
-@RestController
-@RequestMapping("/")
+@Controller
 public class LoginController {
-    private final StudentRepository repository;
-    @Autowired
-    public LoginController(StudentRepository repository) {
-        this.repository = repository;
+    private final AppService service;
+    private SimpMessagingTemplate template;
+    public LoginController(AppService service, SimpMessagingTemplate template) {
+        this.service = service;
+        this.template=template;
     }
-    @PostMapping(value = "/login")
-    public ResponseEntity<Student> addStudent(@RequestBody Student data) {
+    @MessageMapping(value = "/login")
+    @SendTo("/classroom")
+    public Student addStudent(@Payload Student data) {
         try {
-            Student student = repository.save(data);
-            return new ResponseEntity<>(student, HttpStatus.CREATED);
+            return service.addStudent(data);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+            return null;
         }
-    }
-    @GetMapping(value="/login")
-    public ResponseEntity<List<Student>> findAllStudents() {
-        List<Student> students =repository.findAll();
-        return new ResponseEntity<>(students, HttpStatus.OK);
     }
 }

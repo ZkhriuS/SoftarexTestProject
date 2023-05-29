@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-/*
+
 @Service
 public class AppServiceImpl implements AppService{
     StudentRepository repository;
@@ -19,8 +19,8 @@ public class AppServiceImpl implements AppService{
         return repository.findAll();
     }
     @Override
-    public void addStudent(Student student) {
-        repository.save(student);
+    public Student addStudent(Student data) {
+        return repository.save(data);
     }
 
     @Override
@@ -29,4 +29,9 @@ public class AppServiceImpl implements AppService{
         student.setHandUp(!handState);
         repository.save(student);
     }
-}*/
+
+    @Override
+    public Student getStudentById(int id) {
+        return repository.getReferenceById(id);
+    }
+}

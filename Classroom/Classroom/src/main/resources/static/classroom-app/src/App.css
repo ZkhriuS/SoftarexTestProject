@@ -9,5 +9,12 @@
 
 }
 .ListStudents{
-
+  text-align: center;
+  padding-top: 150px;
+}
+.Logout{
+  float: right;
+}
+.LogoutMenuItem{
+  float: right;
 }
