@@ -3,6 +3,7 @@ import {Menu} from "@mui/material";
 import {MenuItem} from "@mui/material";
 import * as React from "react";
 import {Client} from "@stomp/stompjs";
+import {Link} from "react-router-dom";
 
 const SOCKET_URL = 'ws://localhost:8080/';
 export function MenuLogout() {
@@ -41,7 +42,57 @@ export function MenuLogout() {
                 onClose={handleCloseMenu}>
                 <MenuItem className="LogoutMenuItem"
                     onClick={handleCloseMenu}>
-                    Log Out
+                    <Link to="/login">
+                        Log Out
+                    </Link>
+                </MenuItem>
+            </Menu>
+        </div>
+    )
+}
+export function MenuHand() {
+    const[handUp, setHandUp] = React.useState(false);
+    const [selectedElement, setSelectedElement] = React.useState(null);
+    const [open, setOpen] = React.useState(false);
+
+    function handleOpenMenu() {
+        setOpen(true);
+    }
+
+    function handleCloseMenu(event) {
+        setOpen(false);
+        setSelectedElement(event.target);
+    }
+    function changeHandState(event){
+        setHandUp(!handUp);
+        handleCloseMenu(event)
+    }
+    return(
+        <div className="Hand">
+            <div
+                style={{
+                    height: "2rem",
+                    padding: "5px 10px",
+                    backgroundColor: "grey",
+                    width: "7rem",
+                    margin: "10px 10px 30px 10px",
+                    fontSize: "1.2rem",
+                    color: "white",
+                    borderRadius: "12px",
+                    cursor: "pointer",
+                }}
+                onClick={handleOpenMenu}>
+                Actions
+            </div>
+            <Menu
+                id="basic-menu"
+                selectedElement={selectedElement}
+                open={open}
+                onClose={handleCloseMenu}>
+                <MenuItem
+                    id="hand"
+                    onClick={changeHandState}>
+                    Raise hand {handUp?"down":"up"}
                 </MenuItem>
             </Menu>
         </div>
@@ -88,6 +139,9 @@ export default class ClassroomComponent extends Component{
             <div>
                 <nav>
                 <MenuLogout></MenuLogout>
+                </nav>
+                <nav>
+                    <MenuHand></MenuHand>
                 </nav>
                 <p className="ListStudents">
                 <label >Class members</label>

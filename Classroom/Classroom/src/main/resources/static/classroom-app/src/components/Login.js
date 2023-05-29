@@ -18,7 +18,7 @@ const Login = () =>{
         setStudentData({...studentData, firstName:name[0], lastName:name[1]})
     }
     const addStudent = ()=>{
-        let Sock = new SockJS('http://localhost:8081/')
+        let Sock = new SockJS('http://localhost:8080/')
         stompClient=over(Sock)
         stompClient.connect({}, onConnected, onError);
     }
